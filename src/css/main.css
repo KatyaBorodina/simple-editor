@@ -1,0 +1,12 @@
+input[type="file"] {
+    display: none;
+}
+
+label {
+    display: block;
+    width: 10em;
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+    background-color: #b0cdf6;
+}
