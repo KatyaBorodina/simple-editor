@@ -1,6 +1,6 @@
-import { store } from './index';
 import { connect } from 'react-redux';
 import * as React from 'react';
+import Resizable from './resizable';
 import { addImage } from './actions';
 
 class WorkSpace extends React.Component {
@@ -9,7 +9,9 @@ class WorkSpace extends React.Component {
         return (
             <div className="workSpace">
                 {this.props.items.map((item, index) => (
-                    <div className="contentItem"><img key={index} src={item.src} style={{ width: '10em' }} /></div>
+                    <Resizable key={index} {...item} >
+                        <div className="contentItem"><img src={item.src} style={{ width: item.width + 'em' }} /></div>
+                    </Resizable>
                 ))}
             </div>
         )
