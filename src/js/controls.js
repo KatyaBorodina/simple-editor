@@ -1,26 +1,21 @@
+import { connect } from 'react-redux';
 import * as React from 'react';
+import { addImage } from './actions';
 
 class Controls extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            image: '',
-            imageUrl: ''
-        };
-
         this.handleImageChange = this.handleImageChange.bind(this);
     }
 
     render() {
-        let imageUrl = this.state.imageUrl;
-
         return (
-            <div>
+            <div className="controls">
                 <form action="" noValidate={true}>
                     <div>
-                        <label htmlFor="image">Add photo</label>
+                        <label htmlFor="image" className="btn">Add photo</label>
                         <input
                             type="file"
                             id="image"
@@ -30,7 +25,6 @@ class Controls extends React.Component {
                         />
                     </div>
                 </form>
-                {!!imageUrl && <img src={imageUrl} />}
             </div>
         )
     }
@@ -42,9 +36,8 @@ class Controls extends React.Component {
         let imageFile = event.target.files[0];
 
         reader.onloadend = () => {
-            this.setState({
-                file: imageFile,
-                imageUrl: reader.result
+            this.props.addImage({
+                src: reader.result
             });
         };
 
@@ -54,4 +47,12 @@ class Controls extends React.Component {
     }
 }
 
-export default Controls;
+const mapStateToProps = (state) => ({
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    addImage: (image) => dispatch(addImage(image))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Controls);

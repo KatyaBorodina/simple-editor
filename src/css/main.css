@@ -2,11 +2,26 @@ input[type="file"] {
     display: none;
 }
 
-label {
+.controls {
+    margin: 1em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn {
     display: block;
     width: 10em;
     height: 2em;
     line-height: 2em;
     text-align: center;
+    border-radius: 5px;
     background-color: #b0cdf6;
+}
+
+.workSpace .contentItem {
+    background-color: #ccc;
+    padding: .5em;
+    text-align: center;
+    width: 10em;
+    margin: 0 0 .5em 0;
 }
